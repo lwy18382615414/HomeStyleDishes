@@ -10,9 +10,8 @@
     "framework": "React"
   },
   "scripts": {
-    "new": "taro new",
-    "build:weapp": "taro build --type weapp",
-    "dev:weapp": "pnpm run build:weapp -- --watch"
+    "build": "taro build --type weapp",
+    "dev": "taro build --type weapp --mode development --watch"
   },
   "browserslist": [
     "defaults and fully supports es6-module",

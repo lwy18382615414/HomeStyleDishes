@@ -4,7 +4,9 @@ import devConfig from './dev'
 import prodConfig from './prod'
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
-export default defineConfig<'vite'>(async (merge) => {
+export default defineConfig<'vite'>(async (merge, { command, mode }) => {
+  console.log('当前命令：', command)
+  console.log('当前环境：', mode)
   const baseConfig: UserConfigExport<'vite'> = {
     projectName: 'HomeStyleDishes',
     date: '2026-3-24',
@@ -16,7 +18,7 @@ export default defineConfig<'vite'>(async (merge) => {
       828: 1.81 / 2
     },
     sourceRoot: 'src',
-    outputRoot: 'dist',
+    outputRoot: 'dist/HomeStyleDishes',
     plugins: [
       '@tarojs/plugin-generator'
     ],
@@ -44,7 +46,7 @@ export default defineConfig<'vite'>(async (merge) => {
     }
   }
 
-  if (process.env.NODE_ENV === 'development') {
+  if (mode === 'development') {
     return merge({}, baseConfig, devConfig)
   }
 
